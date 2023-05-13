@@ -3,8 +3,12 @@
 <template>
   <main>
     <div class="search-bar">
-      <input class="search-input" type="text" placeholder="Search" />
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <input
+        class="search-input"
+        type="text"
+        placeholder="Search for a video..."
+      />
+      <button>search</button>
     </div>
 
     <h1>POPULAR</h1>
@@ -43,8 +47,29 @@ main .search-bar .search-input {
 }
 
 main .search-bar .search-input:focus {
-  width: 15rem;
+  width: 12rem;
   border-bottom-style: 4px;
-  border-bottom-color: #e75d5d;
+  border-bottom-color: #d44545;
+}
+
+main .search-bar button {
+  background: #e48989;
+  border-radius: 15px;
+  border: 4px;
+}
+main .search-bar button:hover {
+  background: #d44545;
+}
+
+@media (min-width: 1024px) {
+  main .search-bar button {
+    padding: 0.5rem;
+  }
+  main .search-bar .search-input {
+    width: 18rem;
+  }
+  main .search-bar .search-input:focus {
+    width: 20rem;
+  }
 }
 </style>

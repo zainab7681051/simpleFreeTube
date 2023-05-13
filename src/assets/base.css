@@ -5,7 +5,8 @@
   --vt-c-text-light-1: var(--vt-c-indigo);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
 
-  --red: #ff0358;
+  --red: #e48989;
+  --dark-red: #d44545;
   --orange: #f9a71c;
   --black: #000;
   --white: #fff;

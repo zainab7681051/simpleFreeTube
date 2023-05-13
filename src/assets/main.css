@@ -87,7 +87,7 @@ header {
   font-weight: 300;
 }
 
-.menu ul li > * {
+.menu ul li a {
   color: var(--white);
   display: block;
   padding: 0.5rem;
@@ -95,15 +95,15 @@ header {
   transition: color 0.3s ease;
 }
 
-.menu ul li > *:hover {
-  color: var(--blue);
+.menu ul li a:hover {
+  color: var(--dark-red);
 }
 
 .menu ul li + li {
   border-top: 1px solid var(--grey);
 }
 
-.menu ul li > *.active {
+.menu ul li a.router-link-exact-active {
   color: var(--orange);
   pointer-events: none;
 }
@@ -112,7 +112,6 @@ header {
   right: var(--containerXPadding);
   opacity: 1;
 }
-
 a {
   text-decoration: none;
 }

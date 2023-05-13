@@ -15,7 +15,7 @@ export default {
 <template>
   <header class="container">
     <span class="logo">
-      <RouterLink to="/"><h1>SimpleFreeTube</h1></RouterLink>
+      <RouterLink to="/" class="active"><h1>SimpleFreeTube</h1></RouterLink>
     </span>
     <span class="toggle">
       <span></span>
