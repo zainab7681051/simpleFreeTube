@@ -6,7 +6,7 @@
 
 <style scoped>
 .trend {
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
 }

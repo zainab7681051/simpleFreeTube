@@ -23,11 +23,9 @@ export default {
     </span>
     <div class="menu">
       <ul>
-        <li>
-          <RouterLink to="/">Home</RouterLink>
-        </li>
-        <li><RouterLink to="/about">About</RouterLink></li>
+        <li><RouterLink to="/">Home</RouterLink></li>
         <li><RouterLink to="/trending">Trending</RouterLink></li>
+        <li><RouterLink to="/about">About</RouterLink></li>
       </ul>
     </div>
   </header>
