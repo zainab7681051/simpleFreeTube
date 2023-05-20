@@ -1,5 +1,15 @@
+import { invidiousAPICall } from "./invidous.api.js";
 export class callApi {
   async getByPop(k) {
+    return await invidiousAPICall({
+      resource: k.resource, //"popular",
+      params: k.params /*{
+        fields: ["videoId", "title", "description"],
+      },*/,
+    });
+  }
+
+  async getByTrend(k) {
     return await invidiousAPICall({
       resource: "videos",
       id: "aqz-KE-bpKQ",
@@ -9,7 +19,7 @@ export class callApi {
     });
   }
 
-  async getByTrend(k) {
+  async getById(k) {
     return await invidiousAPICall({
       resource: "videos",
       id: "aqz-KE-bpKQ",
