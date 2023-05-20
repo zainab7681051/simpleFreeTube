@@ -28,7 +28,6 @@ main {
 main h1 {
   margin-top: 2rem;
   align-self: center;
-  font-size: 2rem;
 }
 main .search-bar {
   align-self: center;
@@ -61,7 +60,7 @@ main .search-bar button:hover {
   background: #d44545;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 720px) {
   main .search-bar button {
     padding: 0.5rem;
   }
