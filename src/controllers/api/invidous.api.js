@@ -42,26 +42,14 @@ async function getCurrentInstance() {
 
 export async function invidiousAPICall({ resource, id = "", params = {} }) {
   try {
-    let p = "";
-    for (let k in params) {
-      p += `${k}=${
-        Array.isArray(params[k]) ? params[k].join(",") : params[k]
-      }&`;
-    }
+    let p = new URLSearchParams(params).toString();
     const requestUrl =
-      (await getCurrentInstance()) +
-      "/api/v1/" +
-      resource +
-      "/" +
-      id +
-      "?" +
-      p +
-      "pretty=1";
-
+      (await getCurrentInstance()) + "/api/v1/" + resource + "/" + id + "?" + p;
     const response = await fetch(requestUrl);
     const r = await response.json();
+    // console.log(r);
     if (r.error !== undefined) {
-      throw new Error(error);
+      throw new Error(json.error);
     }
     return r;
   } catch (e) {

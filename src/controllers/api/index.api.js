@@ -1,11 +1,9 @@
 import { invidiousAPICall } from "./invidous.api.js";
 export class callApi {
-  async getByPop(k) {
+  async getByPop() {
     return await invidiousAPICall({
-      resource: k.resource, //"popular",
-      params: k.params /*{
-        fields: ["videoId", "title", "description"],
-      },*/,
+      resource: "popular",
+      params: { type: "video", pretty: 1 },
     });
   }
 
