@@ -7,13 +7,10 @@ export class callApi {
     });
   }
 
-  async getByTrend(k) {
+  async getByTrend() {
     return await invidiousAPICall({
-      resource: "videos",
-      id: "aqz-KE-bpKQ",
-      params: {
-        fields: ["videoId", "title", "description"],
-      },
+      resource: "trending",
+      params: { type: "video", pretty: 1 },
     });
   }
 
@@ -21,9 +18,7 @@ export class callApi {
     return await invidiousAPICall({
       resource: "videos",
       id: "aqz-KE-bpKQ",
-      params: {
-        fields: ["videoId", "title", "description"],
-      },
+      params: { pretty: 1 },
     });
   }
 

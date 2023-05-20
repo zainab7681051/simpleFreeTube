@@ -18,7 +18,7 @@ const fetchInvidiousInstances = async () => {
       });
     return instances;
   } catch (err) {
-    console.log({
+    console.error({
       fetchInvidiousInstances_error: err,
     });
   }
@@ -30,11 +30,29 @@ const fetchInvidiousInstances = async () => {
 
 async function getCurrentInstance() {
   try {
-    const instanceList = await fetchInvidiousInstances();
-    const randomInst = Math.floor(Math.random() * instanceList.length);
-    return instanceList[randomInst];
+    const now = new Date();
+    if (!localStorage.workingInstance) {
+      const instanceList = await fetchInvidiousInstances();
+      const randomInst = Math.floor(Math.random() * instanceList.length);
+      localStorage.setItem(
+        "workingInstance",
+        JSON.stringify({
+          inst: instanceList[randomInst],
+          expire: now.getTime() + 1000 * 720, //12 minutes
+        })
+      );
+      return instanceList[randomInst];
+    } else {
+      let local = JSON.parse(localStorage.workingInstance);
+      if (typeof local.inst === "undefined") throw new Error();
+      if (now.getTime() > local.expire) {
+        delete localStorage.workingInstance;
+      }
+      return local.inst;
+    }
   } catch (e) {
-    console.log({
+    delete localStorage.workingInstance;
+    console.error({
       getCurrentInstance_error: e,
     });
   }
@@ -49,10 +67,11 @@ export async function invidiousAPICall({ resource, id = "", params = {} }) {
     const r = await response.json();
     // console.log(r);
     if (r.error !== undefined) {
-      throw new Error(json.error);
+      throw new Error(r.error);
     }
     return r;
   } catch (e) {
+    delete localStorage.workingInstance;
     console.error("Invidious API error", e);
   }
 }
