@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <main>
     <div class="search-bar">
@@ -12,8 +10,13 @@
     </div>
 
     <h1>POPULAR</h1>
+    <popular-vids></popular-vids>
   </main>
 </template>
+
+<script setup>
+import popularVids from "../components/PopularVids.vue";
+</script>
 
 <style scoped>
 main {
