@@ -17,8 +17,11 @@ export class callApi {
   async getById(k) {
     return await invidiousAPICall({
       resource: "videos",
-      id: "aqz-KE-bpKQ",
-      params: { pretty: 1 },
+      id: k, //aqz-KE-bpKQ
+      params: {
+        fields: ["videoId", "title", "description"],
+        pretty: 1,
+      },
     });
   }
 
@@ -28,6 +31,7 @@ export class callApi {
       id: "aqz-KE-bpKQ",
       params: {
         fields: ["videoId", "title", "description"],
+        pretty: 1,
       },
     });
   }

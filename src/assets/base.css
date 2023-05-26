@@ -17,17 +17,9 @@
   --containerXPadding: 1.5rem;
 }
 
-/* semantic color variables for this project */
 :root {
-  --color-background: var(--vt-c-white);
-  --color-text: var(--vt-c-text-light-1);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-text: var(--vt-c-text-dark-2);
-  }
+  --color-background: var(--vt-c-black);
+  --color-text: var(--vt-c-text-dark-2);
 }
 
 *,
