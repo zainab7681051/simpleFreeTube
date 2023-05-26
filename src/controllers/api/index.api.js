@@ -3,7 +3,10 @@ export class callApi {
   async getByPop() {
     return await invidiousAPICall({
       resource: "popular",
-      params: { type: "video", pretty: 1 },
+      params: {
+        type: "video",
+        pretty: 1,
+      },
     });
   }
 
