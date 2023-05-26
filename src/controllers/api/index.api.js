@@ -17,21 +17,21 @@ export class callApi {
     });
   }
 
-  async getById(k) {
+  async getById(id) {
     return await invidiousAPICall({
       resource: "videos",
-      id: k, //aqz-KE-bpKQ
+      id: id,
       params: {
-        fields: ["videoId", "title", "description"],
+        fields: ["videoThumbnails,videoId", "title", "description"],
         pretty: 1,
       },
     });
   }
 
-  async getByQuery(k) {
+  async getByQuery(id) {
     return await invidiousAPICall({
       resource: "videos",
-      id: "aqz-KE-bpKQ",
+      id: id,
       params: {
         fields: ["videoId", "title", "description"],
         pretty: 1,

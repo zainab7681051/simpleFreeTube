@@ -155,6 +155,7 @@ footer p a:hover {
 .sections {
   margin: 2rem;
   padding: 2rem;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

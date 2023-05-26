@@ -11,7 +11,6 @@
       </RouterLink>
     </li>
   </ul>
-  <slot>there is nothing to display</slot>
 </template>
 <script>
 import { RouterLink } from "vue-router";
@@ -19,6 +18,12 @@ import { RouterLink } from "vue-router";
 export default {
   props: { VidData: [] },
   components: { RouterLink },
+  computed: {
+    defined: function () {
+      if (this.VidData != "undefined") return true;
+      else return false;
+    },
+  },
 };
 </script>
 <style scoped>
@@ -30,7 +35,7 @@ ul {
 }
 
 ul li {
-  margin: 2rem;
+  margin: 2.5rem 1rem 2rem 1rem;
   text-align: center;
   width: 300px;
   height: 200px;
