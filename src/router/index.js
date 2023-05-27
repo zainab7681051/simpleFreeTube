@@ -20,6 +20,11 @@ const router = createRouter({
       component: () => import("../views/TrendingView.vue"),
     },
     {
+      path: "/search/:q",
+      name: "search-view",
+      component: () => import("../views/SearchView.vue"),
+    },
+    {
       path: "/watch/:id",
       name: "watch-view",
       component: () => import("../views/WatchView.vue"),

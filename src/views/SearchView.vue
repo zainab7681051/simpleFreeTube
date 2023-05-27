@@ -1,12 +1,17 @@
 <template>
   <main>
-    <h1>WATCH VIDEO</h1>
-    <WatchVid></WatchVid>
+    <h1>search results for: {{ this.$route.params.q }}</h1>
+    <search-vids :q="this.$route.params.q"></search-vids>
   </main>
 </template>
 
-<script setup>
-import WatchVid from "../components/Watch.vue";
+<script>
+import searchVids from "../components/Searchvids.vue";
+export default {
+  components: {
+    searchVids,
+  },
+};
 </script>
 
 <style scoped>

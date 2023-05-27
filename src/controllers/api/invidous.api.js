@@ -22,10 +22,6 @@ const fetchInvidiousInstances = async () => {
       fetchInvidiousInstances_error: err,
     });
   }
-  // If the invidious instance fetch isn't returning anything
-  if (instances.length === 0) {
-    //TO DO
-  }
 };
 
 async function getCurrentInstance() {
@@ -65,8 +61,7 @@ export async function invidiousAPICall({ resource, id = "", params = {} }) {
       (await getCurrentInstance()) + "/api/v1/" + resource + "/" + id + "?" + p;
     const response = await fetch(requestUrl);
     const r = await response.json();
-    // console.log(r);
-    if (r.error !== undefined) {
+    if (r.error !== undefined || r.length < 1) {
       throw new Error(r.error);
     }
     return r;

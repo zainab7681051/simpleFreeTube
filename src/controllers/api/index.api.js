@@ -22,18 +22,27 @@ export class callApi {
       resource: "videos",
       id: id,
       params: {
-        fields: ["videoThumbnails,videoId", "title", "description"],
+        type: "video",
+        fields: [
+          "videoThumbnails",
+          "videoId",
+          "title",
+          "description",
+          "author",
+          "authorThumbnails",
+        ],
         pretty: 1,
       },
     });
   }
 
-  async getByQuery(id) {
+  async getByQuery(q, sortBy = "relevence") {
     return await invidiousAPICall({
-      resource: "videos",
-      id: id,
+      resource: "search",
       params: {
-        fields: ["videoId", "title", "description"],
+        type: "video",
+        q: q,
+        sort_by: sortBy,
         pretty: 1,
       },
     });

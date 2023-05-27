@@ -4,9 +4,10 @@
       <input
         class="search-input"
         type="text"
+        v-model="query"
         placeholder="Search for a video..."
       />
-      <button>search</button>
+      <button @click="search">search</button>
     </div>
 
     <h1>POPULAR</h1>
@@ -14,8 +15,21 @@
   </main>
 </template>
 
-<script setup>
+<script>
 import popularVids from "../components/PopularVids.vue";
+export default {
+  data() {
+    return { query: "" };
+  },
+  components: {
+    popularVids,
+  },
+  methods: {
+    search() {
+      window.open(`search/${this.query}`, "_self");
+    },
+  },
+};
 </script>
 
 <style scoped>

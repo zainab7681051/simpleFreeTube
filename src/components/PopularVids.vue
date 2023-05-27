@@ -17,7 +17,8 @@ export default {
     try {
       if (localStorage.popular_result) {
         const local = await JSON.parse(localStorage.popular_result);
-        if (typeof local === "undefined") throw new Error();
+        if (typeof local.result === "undefined" || local.result.length <= 0)
+          throw new Error();
         this.ResultData = local.result;
         if (this.now.getTime() > local.expire) {
           delete localStorage.popular_result;

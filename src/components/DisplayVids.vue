@@ -1,15 +1,22 @@
 <template>
-  <ul>
+  <ul v-if="defined">
     <li v-for="d in VidData" :key="d.videoId">
       <RouterLink
         :to="{
           path: `/watch/${d.videoId}`,
         }"
+        class="router-link"
       >
         <img class="img" :src="d.videoThumbnails[0].url" />
         <p class="title">{{ d.title }}</p>
+
+        <p class="duration">{{ vidDuration(d.lengthSeconds) }}</p>
+        <p class="authorName">{{ d.author }}</p>
       </RouterLink>
     </li>
+  </ul>
+  <ul class="err" v-else>
+    <h2>something went wrong</h2>
   </ul>
 </template>
 <script>
@@ -20,8 +27,29 @@ export default {
   components: { RouterLink },
   computed: {
     defined: function () {
-      if (this.VidData != "undefined") return true;
+      if (typeof this.VidData != "undefined") return true;
       else return false;
+    },
+  },
+  methods: {
+    vidDuration(durationInSec) {
+      try {
+        let result;
+        const totalSeconds = durationInSec;
+
+        const minutes = Math.floor(totalSeconds / 60);
+
+        const seconds = totalSeconds % 60;
+
+        function padTo2Digits(num) {
+          return num.toString().padStart(2, "0");
+        }
+
+        result = `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
+        return result;
+      } catch (e) {
+        console.error("DisplayVids error", e);
+      }
     },
   },
 };
@@ -52,12 +80,25 @@ a {
   text-decoration: none;
 }
 .title {
-  font-size: 1.1em;
+  font-size: 0.9em;
   color: var(--white);
 }
 .img {
   width: 100%;
   height: auto;
   border-radius: 4px;
+}
+
+.duration {
+  color: var(--orange);
+  font-size: 0.8em;
+}
+.authorName {
+  color: var(--lightgrey);
+  font-size: 0.7em;
+}
+
+.err h2 {
+  padding: 2rem;
 }
 </style>

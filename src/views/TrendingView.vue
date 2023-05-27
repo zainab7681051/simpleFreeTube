@@ -20,7 +20,8 @@ export default {
     try {
       if (localStorage.trending_result) {
         const local = await JSON.parse(localStorage.trending_result);
-        if (typeof local === "undefined") throw new Error();
+        if (typeof local === "undefined" || local.result.length <= 0)
+          throw new Error();
         this.ResultData = local.result;
         if (this.now.getTime() > local.expire) {
           delete localStorage.trending_result;
