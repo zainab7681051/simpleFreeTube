@@ -12,7 +12,6 @@
     <div class="info">
       <h2>{{ result.title }}</h2>
       <h3>{{ result.description }}</h3>
-      <h3></h3>
     </div>
   </div>
 </template>
