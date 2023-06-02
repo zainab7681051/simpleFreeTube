@@ -9,6 +9,7 @@
     "test:unit": "vitest"
   },
   "dependencies": {
+    "firebase": "^9.22.1",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
   },
