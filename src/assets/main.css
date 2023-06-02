@@ -153,8 +153,10 @@ footer p a:hover {
 }
 
 .sections {
-  margin: 2rem;
-  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   height: auto;
   display: flex;
   flex-wrap: wrap;

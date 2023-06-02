@@ -1,7 +1,19 @@
 <template>
   <div class="video-container">
-    <h2>{{ result.title }}</h2>
-    <h3>{{ result.description }}</h3>
+    <div class="yt-frame">
+      <iframe
+        :src="url"
+        :title="result.title"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <div class="info">
+      <h2>{{ result.title }}</h2>
+      <h3>{{ result.description }}</h3>
+      <h3></h3>
+    </div>
   </div>
 </template>
 
@@ -12,40 +24,43 @@ export default {
     return {
       result: "",
       call: new callApi(),
+      url: "",
     };
   },
   async mounted() {
     const params = this.$route.params;
     this.result = await this.call.getById(params.id);
+    this.url = "https://www.youtube.com/embed/" + (await this.result.videoId);
   },
 };
 </script>
 <style>
 .video-container {
-  height: auto;
-  width: 90vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.video-container h2 {
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+}
+.info h2 {
   text-align: center;
   color: var(--white);
 }
 
-.video-container h3 {
+.info h3 {
   margin-top: 1.5rem;
   font-size: 0.9em;
   text-align: justify;
-  height: 100px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.video-container h3:hover {
   height: auto;
-  white-space: unset;
-  overflow: visible;
-  text-overflow: unset;
+}
+
+.yt-frame iframe {
+  height: 480px;
+  width: 100%;
 }
 </style>

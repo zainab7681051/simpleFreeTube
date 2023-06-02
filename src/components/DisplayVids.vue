@@ -65,13 +65,12 @@ ul {
 ul li {
   margin: 2.5rem 1rem 2rem 1rem;
   text-align: center;
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease-in-out;
 }
 ul li:hover {
   cursor: pointer;
@@ -100,5 +99,12 @@ a {
 
 .err h2 {
   padding: 2rem;
+}
+
+@media (min-width: 720px) {
+  ul li {
+    width: 300px;
+    height: 200px;
+  }
 }
 </style>
