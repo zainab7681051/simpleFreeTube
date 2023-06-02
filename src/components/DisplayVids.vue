@@ -1,5 +1,5 @@
 <template>
-  <ul v-if="defined">
+ <ul v-if="defined">
     <li v-for="d in VidData" :key="d.videoId">
       <RouterLink
         :to="{
@@ -15,9 +15,10 @@
       </RouterLink>
     </li>
   </ul>
+  
   <ul class="err" v-else>
     <h2>something went wrong</h2>
-  </ul>
+  </ul> 
 </template>
 <script>
 import { RouterLink } from "vue-router";
@@ -49,6 +50,7 @@ export default {
         return result;
       } catch (e) {
         console.error("DisplayVids error", e);
+        
       }
     },
   },
@@ -100,7 +102,6 @@ a {
 .err h2 {
   padding: 2rem;
 }
-
 @media (min-width: 720px) {
   ul li {
     width: 300px;

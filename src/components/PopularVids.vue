@@ -1,21 +1,26 @@
 <template>
-  <display-vids :VidData="ResultData"></display-vids>
+  <loading-skeleton v-if="isLoading"></loading-skeleton>
+  <display-vids v-if="!isLoading" :VidData="ResultData"></display-vids>
 </template>
 <script>
 import { callApi } from "../controllers/api/index.api.js";
 import DisplayVids from "./DisplayVids.vue";
+import LoadingSkeleton from "./LoadingSkeleton.vue"
 export default {
   data() {
     return {
       ResultData: "",
       call: new callApi(),
       now: new Date(),
+      isLoading:true,
+      timeoutN:0
     };
   },
-  components: { DisplayVids },
+  components: { DisplayVids, LoadingSkeleton },
   async mounted() {
     try {
       if (localStorage.popular_result) {
+        this.timeoutN=2000;
         const local = await JSON.parse(localStorage.popular_result);
         if (typeof local.result === "undefined" || local.result.length <= 0)
           throw new Error();
@@ -24,6 +29,7 @@ export default {
           delete localStorage.popular_result;
         }
       } else {
+        this.timeoutN=5000;
         const result = await this.call.getByPop();
         if (typeof result === "undefined") throw new Error();
         this.ResultData = result;
@@ -38,9 +44,13 @@ export default {
     } catch (e) {
       delete localStorage.popular_result;
       console.error("PopularVids.vue error", e);
+    } finally {
+      setTimeout(()=>{
+        this.isLoading=!this.isLoading
+      }, this.timeoutN)
+
     }
   },
   methods: {},
 };
 </script>
-<style></style>

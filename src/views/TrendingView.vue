@@ -1,24 +1,30 @@
 <template>
   <div class="trend">
     <h1>Trending</h1>
-    <display-vids :VidData="ResultData"></display-vids>
+
+      <loading-skeleton v-if="isLoading"></loading-skeleton>
+      <display-vids v-if="!isLoading" :VidData="ResultData"></display-vids>
   </div>
 </template>
 <script>
 import { callApi } from "../controllers/api/index.api.js";
 import DisplayVids from "../components/DisplayVids.vue";
+import LoadingSkeleton from "../components/LoadingSkeleton.vue"
 export default {
   data() {
     return {
       ResultData: "",
       call: new callApi(),
       now: new Date(),
+      isLoading:true,
+      timeoutN:0
     };
   },
-  components: { DisplayVids },
+  components: { DisplayVids, LoadingSkeleton },
   async mounted() {
     try {
       if (localStorage.trending_result) {
+        this.timeoutN=2000;
         const local = await JSON.parse(localStorage.trending_result);
         if (typeof local === "undefined" || local.result.length <= 0)
           throw new Error();
@@ -27,6 +33,7 @@ export default {
           delete localStorage.trending_result;
         }
       } else {
+        this.timeoutN=5000;
         const result = await this.call.getByTrend();
         if (typeof result === "undefined") throw new Error();
         this.ResultData = result;
@@ -41,6 +48,11 @@ export default {
     } catch (e) {
       delete localStorage.trending_result;
       console.error("TrendingView.vue error", e);
+    } finally {
+      setTimeout(()=>{
+        this.isLoading=!this.isLoading
+      }, this.timeoutN)
+
     }
   },
   methods: {},
