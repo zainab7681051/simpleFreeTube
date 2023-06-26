@@ -1,29 +1,16 @@
 <template>
+  <loading-skeleton v-if="isLoading"></loading-skeleton>
   <display-vids :VidData="ResultData"></display-vids>
+  <div class="searchView">
+    <h3 class="error"></h3>
+  </div>
 </template>
-<script>
-import { callApi } from "../controllers/api/index.api.js";
-import DisplayVids from "./DisplayVids.vue";
-export default {
-  data() {
-    return {
-      ResultData: "",
-      call: new callApi(),
-      now: new Date(),
-    };
-  },
-  props: { q: "" },
-  components: { DisplayVids },
-  async mounted() {
-    try {
-      const result = await this.call.getByQuery(this.q);
-      if (typeof result === "undefined") throw new Error();
-      this.ResultData = result;
-    } catch (e) {
-      delete localStorage.search_result;
-      console.error("SearchVids.vue error", e);
-    }
-  },
-};
-</script>
-<style></style>
+<script src="../scripts/SearchvidsScript"></script>
+<style>
+.searchView {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 2rem;
+}
+</style>

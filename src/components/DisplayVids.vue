@@ -1,5 +1,5 @@
 <template>
- <ul v-if="defined">
+  <ul v-if="defined">
     <li v-for="d in VidData" :key="d.videoId">
       <RouterLink
         :to="{
@@ -15,47 +15,12 @@
       </RouterLink>
     </li>
   </ul>
-  
+
   <ul class="err" v-else>
     <h2>something went wrong</h2>
-  </ul> 
+  </ul>
 </template>
-<script>
-import { RouterLink } from "vue-router";
-
-export default {
-  props: { VidData: [] },
-  components: { RouterLink },
-  computed: {
-    defined: function () {
-      if (typeof this.VidData != "undefined") return true;
-      else return false;
-    },
-  },
-  methods: {
-    vidDuration(durationInSec) {
-      try {
-        let result;
-        const totalSeconds = durationInSec;
-
-        const minutes = Math.floor(totalSeconds / 60);
-
-        const seconds = totalSeconds % 60;
-
-        function padTo2Digits(num) {
-          return num.toString().padStart(2, "0");
-        }
-
-        result = `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
-        return result;
-      } catch (e) {
-        console.error("DisplayVids error", e);
-        
-      }
-    },
-  },
-};
-</script>
+<script src="../scripts/DisplayVidsScript.js"></script>
 <style scoped>
 ul {
   list-style: none;

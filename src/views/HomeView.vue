@@ -6,6 +6,7 @@
         type="text"
         v-model="query"
         placeholder="Search for a video..."
+        @keyup.enter="search"
       />
       <button @click="search">search</button>
     </div>
@@ -15,22 +16,7 @@
   </main>
 </template>
 
-<script>
-import popularVids from "../components/PopularVids.vue";
-export default {
-  data() {
-    return { query: "" };
-  },
-  components: {
-    popularVids,
-  },
-  methods: {
-    search() {
-      window.open(`search/${this.query}`, "_self");
-    },
-  },
-};
-</script>
+<script src="../scripts/HomeScrips.js"></script>
 
 <style scoped>
 main {
@@ -44,6 +30,7 @@ main {
 
 main h1 {
   margin-top: 2rem;
+  margin-bottom: 2rem;
   align-self: center;
 }
 main .search-bar {
@@ -53,8 +40,9 @@ main .search-bar {
 main .search-bar .search-input {
   background: transparent;
   color: var(--white);
-  width: 10rem;
+  width: 14rem;
   line-height: 18px;
+  font-size: 18px;
   border-width: 0 0 2px 0;
   border-style: none none solid none;
   padding: 4px 8px 4px 8px;
@@ -63,7 +51,7 @@ main .search-bar .search-input {
 }
 
 main .search-bar .search-input:focus {
-  width: 12rem;
+  width: 16rem;
   border-bottom-style: 4px;
   border-bottom-color: #d44545;
 }
@@ -72,6 +60,8 @@ main .search-bar button {
   background: #e48989;
   border-radius: 15px;
   border: 4px;
+  font-size: 15px;
+  cursor: pointer;
 }
 main .search-bar button:hover {
   background: #d44545;
@@ -80,9 +70,11 @@ main .search-bar button:hover {
 @media (min-width: 720px) {
   main .search-bar button {
     padding: 0.5rem;
+    font-size: 18px;
   }
   main .search-bar .search-input {
     width: 18rem;
+    font-size: 24px;
   }
   main .search-bar .search-input:focus {
     width: 20rem;

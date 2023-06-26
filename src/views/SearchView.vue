@@ -1,6 +1,9 @@
 <template>
   <main>
-    <h1>search results for: {{ this.$route.params.q }}</h1>
+    <h1>
+      search results for:
+      <span style="font-weight: 700">{{ this.$route.params.q }}</span>
+    </h1>
     <search-vids :q="this.$route.params.q"></search-vids>
   </main>
 </template>
