@@ -14,13 +14,11 @@ export default {
   components: { DisplayVids, LoadingSkeleton },
   async mounted() {
     try {
-      this.timeoutN = 4000;
-      this.errorText = "";
+      this.timeoutN = 5000;
       const result = await this.call.getByQuery(this.q);
       if (typeof result === "undefined") throw new Error();
       this.ResultData = result;
     } catch (e) {
-      console.error("SearchVids.vue error", e);
       document.querySelector(
         ".error"
       ).innerHTML = `nothing was found for <span style="font-weight:800">"${this.$route.params.q}"</span>`;
