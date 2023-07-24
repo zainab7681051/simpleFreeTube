@@ -48,7 +48,7 @@ export default {
           "trending_result",
           JSON.stringify({
             result: result,
-            expire: this.now.getTime() + 1000 * 600, //10 minutes
+            expire: this.now.getTime() + 1000  * 600, //10 minutes
           })
         );
         return result;

@@ -23,28 +23,40 @@ const fetchInvidiousInstances = async () => {
     });
   }
 };
-
-async function getCurrentInstance() {
-  try {
-    const now = new Date();
-    if (!localStorage.workingInstance) {
-      const instanceList = await fetchInvidiousInstances();
-      const randomInst = Math.floor(Math.random() * instanceList.length);
+function randNum(length){
+      const randomInst = Math.floor(Math.random() * length);
+      return randomInst
+}
+async function callfetchInvidiousInstances(now){
+  const instanceList=await fetchInvidiousInstances();
+  const randomInst=randNum(instanceList.length);
       localStorage.setItem(
         "workingInstance",
         JSON.stringify({
           inst: instanceList[randomInst],
-          expire: now.getTime() + 1000 * 720, //12 minutes
-        })
-      );
+          expire: now.getTime() + 1000 * 600, //10 minutes
+        }));
+        return instanceList;
+}
+async function getCurrentInstance() {
+  try {
+    const now = new Date();
+    if (!localStorage.workingInstance) {
+      const instanceList = await callfetchInvidiousInstances(now);
+      const randomInst=randNum(instanceList.length);
       return instanceList[randomInst];
     } else {
       let local = JSON.parse(localStorage.workingInstance);
       if (typeof local.inst === "undefined") throw new Error();
       if (now.getTime() > local.expire) {
         delete localStorage.workingInstance;
+        const instanceList = await callfetchInvidiousInstances(now);
+        const randomInst=randNum(instanceList.length);
+        return instanceList[randomInst];
       }
-      return local.inst;
+      else{
+        return local.inst;
+      }
     }
   } catch (e) {
     delete localStorage.workingInstance;
@@ -68,5 +80,7 @@ export async function invidiousAPICall({ resource, id = "", params = {} }) {
   } catch (e) {
     delete localStorage.workingInstance;
     console.error("Invidious API error", e);
+    alert("something went wrong while fetching. this page will be reloaded.")
+    location.reload();
   }
 }
