@@ -14,7 +14,7 @@ export default {
   components: { DisplayVids, LoadingSkeleton },
   async mounted() {
     try {
-      if (localStorage.trending_result) {
+      if (localStorage.trending_result){
         this.timeoutN = 2000;
         const local = await JSON.parse(localStorage.trending_result);
         if (this.now.getTime() > local.expire) {
@@ -32,7 +32,9 @@ export default {
         this.ResultData=await this.getFromApi();
       }
     } catch (e) {
+      if (localStorage.trending_result){
       delete localStorage.trending_result;
+    }
       console.error("TrendingView.vue error", e);
     } finally {
       setTimeout(() => {

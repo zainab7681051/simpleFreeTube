@@ -1,7 +1,7 @@
 import { RouterLink } from "vue-router";
 
 export default {
-  props: { VidData: [] },
+  props: { VidData: Array },
   components: { RouterLink },
   computed: {
     defined: function () {

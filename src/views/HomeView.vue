@@ -1,13 +1,7 @@
 <template>
   <main>
     <div class="search-bar">
-      <input
-        class="search-input"
-        type="text"
-        v-model="query"
-        placeholder="Search for a video..."
-        @keyup.enter="search"
-      />
+      <input class="search-input" type="text" v-model="query" placeholder="Search for a video..." @keyup.enter="search" />
       <button @click="search">search</button>
     </div>
 
@@ -33,10 +27,12 @@ main h1 {
   margin-bottom: 2rem;
   align-self: center;
 }
+
 main .search-bar {
   align-self: center;
   display: flex;
 }
+
 main .search-bar .search-input {
   background: transparent;
   color: var(--white);
@@ -51,7 +47,7 @@ main .search-bar .search-input {
 }
 
 main .search-bar .search-input:focus {
-  width: 16rem;
+  width: 18rem;
   border-bottom-style: 4px;
   border-bottom-color: #d44545;
 }
@@ -63,6 +59,7 @@ main .search-bar button {
   font-size: 15px;
   cursor: pointer;
 }
+
 main .search-bar button:hover {
   background: #d44545;
 }
@@ -72,12 +69,14 @@ main .search-bar button:hover {
     padding: 0.5rem;
     font-size: 18px;
   }
+
   main .search-bar .search-input {
     width: 18rem;
     font-size: 24px;
   }
+
   main .search-bar .search-input:focus {
-    width: 20rem;
+    width: 30rem;
   }
 }
 </style>

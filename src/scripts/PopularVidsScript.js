@@ -32,7 +32,9 @@ export default {
         this.ResultData=await this.getFromApi();
       }
     } catch (e) {
+      if (localStorage.popular_result){
       delete localStorage.popular_result;
+    }
       console.error("PopularVids.vue error", e);
     } finally {
       setTimeout(() => {

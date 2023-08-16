@@ -28,3 +28,4 @@ target
 *.sw?
 #others
 notes.txt
+yarn.lock
