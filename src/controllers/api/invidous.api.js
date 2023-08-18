@@ -31,21 +31,20 @@ function randNum(length){
 async function callfetchInvidiousInstances(now){
   const instanceList=await fetchInvidiousInstances();
   // const randomInst=randNum(instanceList.length);
-  //     localStorage.setItem(
-  //       "workingInstance",
-  //       JSON.stringify({
-  //         inst: instanceList[randomInst],
-  //         expire: now.getTime() + 1000 * 600, //10 minutes
-  //       }));
+      localStorage.setItem(
+        "workingInstance",
+        JSON.stringify({
+          inst: instanceList[0],
+          expire: now.getTime() + 1000 * 600, //10 minutes
+        }));
         return instanceList;
 }
 async function getCurrentInstance() {
   try {
-    const now = new Date();
+    let now = new Date();
     if (!localStorage.workingInstance) {
       const instanceList = await callfetchInvidiousInstances(now);
       // const randomInst=randNum(instanceList.length);
-      instanceList.map(e=>console.log(e));
       return instanceList[0];
     } else {
       let local = JSON.parse(localStorage.workingInstance);
