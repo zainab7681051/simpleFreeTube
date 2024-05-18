@@ -38,7 +38,7 @@ export default {
     </a>
     <p>{{ new Date().getFullYear() }}</p>
     <p>
-      &copy<a href="https://github.com/zainab7681051/zainab.portfolio" target="_blank">Zainab</a>
+      &copy<a href="https://zainab7681051.github.io/zainab.portfolio/" target="_blank">Zainab</a>
     </p>
   </footer>
 </template>
