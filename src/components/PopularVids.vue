@@ -10,6 +10,7 @@ export default {
       call: new callApi(),
       now: new Date(),
       isLoading: true,
+      imgLoadedCount: 0,
       error: null
     };
   },
@@ -27,8 +28,9 @@ export default {
       }
       return result;
     },
-    onImageLoad(index) {
-      if (index >= 15) {
+    onImageLoad() {
+      ++this.imgLoadedCount;
+      if (this.imgLoadedCount >= this.ResultData.length) {
         this.isLoading = false;
       }
     }

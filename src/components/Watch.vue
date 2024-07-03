@@ -13,7 +13,7 @@ export default {
       const params = this.$route.params;
       this.result = await this.call.getById(params.id);
       this.url = "https://www.youtube.com/embed/" + (await this.result.videoId);
-    } catch (e) {}
+    } catch (e) { }
   },
 };
 
@@ -22,13 +22,9 @@ export default {
 <template>
   <div class="video-container">
     <div class="yt-frame">
-      <iframe
-        :src="url"
-        :title="result.title"
-        frameborder="0"
+      <iframe :src="url" :title="result.title" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
+        allowfullscreen></iframe>
     </div>
     <div class="info">
       <h2>{{ result.title }}</h2>
@@ -43,6 +39,7 @@ export default {
   flex-direction: column;
   justify-content: center;
 }
+
 .info {
   display: flex;
   flex-direction: column;
@@ -50,6 +47,7 @@ export default {
   width: auto;
   height: auto;
 }
+
 .info h2 {
   text-align: center;
   color: var(--white);

@@ -1,20 +1,13 @@
 <template>
   <main>
-    <h1>
-      search results for:
-      <span style="font-weight: 700">{{ this.$route.query.q }}</span>
-    </h1>
-    <search-vids :q="this.$route.query.q"></search-vids>
+    <search-bar />
+    <search-vids></search-vids>
   </main>
 </template>
 
-<script>
-import searchVids from "../components/Searchvids.vue";
-export default {
-  components: {
-    searchVids,
-  },
-};
+<script setup>
+import SearchVids from "../components/Searchvids.vue";
+import SearchBar from "../components/SearchBar.vue";
 </script>
 
 <style scoped>
@@ -25,10 +18,5 @@ main {
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
-}
-
-main h1 {
-  margin-top: 2rem;
-  align-self: center;
 }
 </style>

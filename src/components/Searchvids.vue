@@ -5,36 +5,36 @@ import LoadingSkeleton from "../components/LoadingSkeleton.vue";
 export default {
   data() {
     return {
-      ResultData: "",
+      ResultData: new Array(),
       call: new callApi(),
-      timeoutN: 0,
       isLoading: true,
-      error: null
+      imgLoadedCount: 0,
+      noResult: false
     };
   },
-  props: { q: "" },
   components: { DisplayVids, LoadingSkeleton },
   async mounted() {
-    try {
-      const result = await this.call.getByQuery(this.q);
-      if (typeof result === "undefined") throw new Error();
-      this.ResultData = result;
-    } catch (e) {
-      document.querySelector(
-        ".error"
-      ).innerHTML = `nothing was found for <span style="font-weight:800">"${this.q}"</span>`;
+    await this.searchByQuery(this.$route.query.q);
+  },
+  watch: {
+    '$route.query.q': async function (newQuery) {
+      await this.searchByQuery(newQuery);
     }
-    /* 
-    if (result.error !== undefined || result.length < 1) {
-        this.error.msg = "Fetching popular youtube videos was unsuccesfull. Please try again.";
-        this.error.code = 500;
-        return;
-      }
-    */
   },
   methods: {
-    onImageLoad(index) {
-      if (index >= 6) {
+    async searchByQuery() {
+      this.isLoading = true;
+      this.noResult = false;
+      this.imgLoadedCount = 0;
+      const result = await this.call.getByQuery(this.$route.query.q);
+      if (result.length > 0) {
+        return this.ResultData = result;
+      }
+      return this.noResult = true
+    },
+    onImageLoad() {
+      ++this.imgLoadedCount;
+      if (this.imgLoadedCount >= this.ResultData.length) {
         this.isLoading = false;
       }
     }
@@ -43,17 +43,30 @@ export default {
 </script>
 
 <template>
-  <loading-skeleton v-if="isLoading"></loading-skeleton>
-  <display-vids v-show="!isLoading" @img-loaded="onImageLoad" :VidData="ResultData"></display-vids>
-  <div class="searchView">
-    <h3 class="error"></h3>
+  <div class="container" v-if="noResult">
+    <h1 class="results-text no-results">found no results for &nbsp;"<span>{{ this.$route.query.q }}</span>"</h1>
+  </div>
+  <div class="container" v-else>
+    <loading-skeleton v-if="isLoading"></loading-skeleton>
+    <h1 class="results-text" v-show="!isLoading">search results for&nbsp;"<span>{{ this.$route.query.q }}</span>"</h1>
+    <display-vids v-show="!isLoading" @img-loaded="onImageLoad" :VidData="ResultData"></display-vids>
   </div>
 </template>
-<style>
-.searchView {
-  display: flex;
-  flex-direction: column;
+<style scoped>
+.container {
+  display: block;
+  margin: 2rem auto;
+}
+
+.results-text {
   text-align: center;
-  padding-top: 2rem;
+  text-transform: capitalize;
+  font-size: 2.5em;
+}
+
+.results-text span {
+  text-transform: none;
+  color: var(--orange);
+  font-weight: 700
 }
 </style>

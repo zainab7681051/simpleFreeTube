@@ -3,6 +3,7 @@ import { callApi } from "../controllers/api/index.api.js";
 import DisplayVids from "../components/DisplayVids.vue";
 import LoadingSkeleton from "../components/LoadingSkeleton.vue";
 import ErrorBox from "../components/ErrorBox.vue";
+import SearchBar from "../components/SearchBar.vue"
 export default {
   data() {
     return {
@@ -10,10 +11,16 @@ export default {
       call: new callApi(),
       now: new Date(),
       isLoading: true,
+      imgLoadedCount:0,
       error: null
     };
   },
-  components: { DisplayVids, LoadingSkeleton, ErrorBox },
+  components: { 
+    DisplayVids, 
+    LoadingSkeleton, 
+    ErrorBox, 
+    SearchBar
+  },
   async mounted() {
     this.ResultData = await this.getFromApi();
   },
@@ -28,7 +35,8 @@ export default {
       return result;
     },
     onImageLoad(index) {
-      if (index >= 15) {
+      ++this.imgLoadedCount;
+      if (this.imgLoadedCount >= this.ResultData.length) {
         this.isLoading = false;
       }
     }
@@ -38,6 +46,7 @@ export default {
 
 <template>
   <div class="trend">
+    <search-bar/>
     <h1>Trending</h1>
     <div v-if="!error">
       <loading-skeleton v-if="isLoading"></loading-skeleton>

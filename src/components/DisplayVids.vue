@@ -15,7 +15,7 @@ export default {
       let vid = this.VidData[index]
       return vid.videoThumbnails[0]?.url || '';
     },
-    
+
     vidDuration(durationInSec) {
       let result;
       const totalSeconds = durationInSec;
@@ -37,12 +37,12 @@ export default {
 </script>
 
 <template>
-  <ul>
-    <li v-for="(d, index) in VidData" :key="index">
+  <div class="vids-container">
+    <div class="vid" v-for="(d, index) in VidData" :key="index">
       <RouterLink :to="{
         path: `/watch/${d.videoId}`
       }" class="router-link">
-        <img class="img" :src="defaultThumbnailUrl(index)" :srcset="srcset(index)"
+        <img class="vid-thumbnail" :src="defaultThumbnailUrl(index)" :srcset="srcset(index)"
           sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw" :title="d.title"
           @load="$emit('imgLoaded', index)" />
 
@@ -52,13 +52,12 @@ export default {
         <p class="duration">{{ vidDuration(d.lengthSeconds) }}</p>
         <p class="authorName">{{ d.author }}</p>
       </RouterLink>
-    </li>
-  </ul>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-ul {
-  list-style: none;
+.vids-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -66,7 +65,7 @@ ul {
   align-items: baseline;
 }
 
-ul li {
+.vids-container .vid {
   margin: 2rem 1rem 2rem 0rem;
   text-align: center;
   width: 100%;
@@ -77,7 +76,7 @@ ul li {
   justify-content: center;
 }
 
-ul li:hover {
+.vids-container .vid:hover {
   cursor: pointer;
 }
 
@@ -95,10 +94,10 @@ a {
   color: var(--white);
 }
 
-.img {
+.vid-thumbnail {
   width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .duration {
@@ -111,44 +110,21 @@ a {
   font-size: 0.7em;
 }
 
-.err h2 {
-  padding: 2rem;
-}
-
 @media (min-width: 600px) {
-  ul li {
+  .vids-container .vid {
     width: 52%;
-  }
-
-  img {
-    width: 55%;
   }
 }
 
 @media (min-width: 720px) {
-  ul li {
+  .vids-container .vid {
     width: 42%;
-  }
-
-  img {
-    width: 44%;
   }
 }
 
 @media (min-width: 1200px) {
-  ul li {
+  .vids-container .vid {
     width: 32%;
   }
-
-  img {
-    width: 33%;
-  }
 }
-
-/* @media (min-width: 720px) {
-  ul li {
-    width: 300px;
-    height: 200px;
-  }
-} */
 </style>
