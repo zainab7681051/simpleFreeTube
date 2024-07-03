@@ -15,7 +15,9 @@ export default {
 <template>
   <header class="container">
     <span class="logo">
-      <RouterLink to="/" class="active"><h1>SimpleFreeTube</h1></RouterLink>
+      <RouterLink to="/" class="active">
+        <h1>SimpleFreeTube</h1>
+      </RouterLink>
     </span>
     <span class="toggle">
       <span></span>
@@ -23,18 +25,26 @@ export default {
     </span>
     <div class="menu">
       <ul>
-        <li><RouterLink to="/">Home</RouterLink></li>
-        <li><RouterLink to="/trending">Trending</RouterLink></li>
-        <li><RouterLink to="/about">About</RouterLink></li>
+        <li>
+          <RouterLink to="/">Home</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/trending">Trending</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/about">About</RouterLink>
+        </li>
       </ul>
     </div>
   </header>
 
-  <div class="sections"><RouterView /></div>
+  <div class="sections">
+    <RouterView />
+  </div>
 
   <footer>
     <a href="https://github.com/zainab7681051/simpleFreeTube" target="_blank">
-      <i class="fa-brands fa-github"></i>
+      <i class="bi bi-github"></i>
     </a>
     <p>{{ new Date().getFullYear() }}</p>
     <p>
@@ -42,5 +52,3 @@ export default {
     </p>
   </footer>
 </template>
-
-<style scoped></style>

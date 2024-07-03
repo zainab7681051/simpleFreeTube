@@ -2,9 +2,9 @@
   <main>
     <h1>
       search results for:
-      <span style="font-weight: 700">{{ this.$route.params.q }}</span>
+      <span style="font-weight: 700">{{ this.$route.query.q }}</span>
     </h1>
-    <search-vids :q="this.$route.params.q"></search-vids>
+    <search-vids :q="this.$route.query.q"></search-vids>
   </main>
 </template>
 

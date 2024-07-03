@@ -1,4 +1,5 @@
 @import "./base.css";
+
 /* 
 @media (min-width: 1024px) {
 } */
@@ -6,6 +7,7 @@
   display: flex;
   flex-direction: column;
 }
+
 .container {
   padding-left: var(--containerXPadding);
   padding-right: var(--containerXPadding);
@@ -15,13 +17,13 @@ header {
   z-index: 50;
   width: 100%;
   top: 0;
-  position: absolute;
+  position: relative;
   padding-top: 1.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 1px solid var(--blue);
 }
 
 .logo {
@@ -99,7 +101,7 @@ header {
   color: var(--dark-red);
 }
 
-.menu ul li + li {
+.menu ul li+li {
   border-top: 1px solid var(--grey);
 }
 
@@ -112,6 +114,7 @@ header {
   right: var(--containerXPadding);
   opacity: 1;
 }
+
 a {
   text-decoration: none;
 }
@@ -148,11 +151,14 @@ footer p a {
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
+
 footer p a:hover {
   color: #fc1555;
 }
 
 .sections {
+  position: relative;
+  min-height: 70vh;
   margin-top: 2rem;
   margin-bottom: 2rem;
   padding-top: 2rem;
@@ -162,10 +168,30 @@ footer p a:hover {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.custom-button {
+  display: block;
+  background: var(--dark-red);
+  color: var(--blue);
+  padding: 10px;
+  font-size: 1.2em;
+  border-style: none;
+  border-radius: 7px;
+  cursor: pointer;
+  text-transform: capitalize;
+  transition: all .4s ease-in-out;
+}
+
+.custom-button:hover {
+  color: var(--dark-red);
+  background: var(--blue);
+}
+
 @media (min-width: 1024px) {
   .toggle {
     display: none;
   }
+
   .menu {
     background: transparent;
     position: static;
@@ -175,15 +201,18 @@ footer p a:hover {
     width: auto;
     padding: 0;
   }
+
   .menu ul {
     display: flex;
     gap: 3rem;
   }
-  .menu ul li > * {
+
+  .menu ul li>* {
     color: var(--white);
     padding: 0;
   }
-  .menu ul li + li {
+
+  .menu ul li+li {
     border-top: none;
   }
 }

@@ -1,8 +1,28 @@
+<script>
+import popularVids from "../components/PopularVids.vue";
+export default {
+  data() {
+    return { query: "" };
+  },
+  components: {
+    popularVids,
+  },
+  methods: {
+    search() {
+      if (this.query.trim()) {
+        return this.$router.push({ path: '/search', query: { q: this.query } });
+      }
+    },
+  },
+};
+</script>
+
 <template>
   <main>
     <div class="search-bar">
-      <input class="search-input" type="text" v-model="query" placeholder="Search for a video..." @keyup.enter="search" />
-      <button @click="search">search</button>
+      <input class="search-input" type="text" v-model="query" placeholder="Search for a video..."
+        @keyup.enter="search" />
+      <button class="custom-button" @sumbit="search">search</button>
     </div>
 
     <h1>POPULAR</h1>
@@ -10,7 +30,6 @@
   </main>
 </template>
 
-<script src="../scripts/HomeScrips.js"></script>
 
 <style scoped>
 main {
@@ -52,24 +71,11 @@ main .search-bar .search-input:focus {
   border-bottom-color: #d44545;
 }
 
-main .search-bar button {
-  background: #e48989;
-  border-radius: 15px;
-  border: 4px;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-main .search-bar button:hover {
-  background: #d44545;
+.custom-button {
+  margin-left: 1rem;
 }
 
 @media (min-width: 720px) {
-  main .search-bar button {
-    padding: 0.5rem;
-    font-size: 18px;
-  }
-
   main .search-bar .search-input {
     width: 18rem;
     font-size: 24px;
