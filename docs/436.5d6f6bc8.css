@@ -1,0 +1,22 @@
+
+.searchView {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+
+main[data-v-d2ebae0e] {
+  min-height: 90vh;
+  min-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+main h1[data-v-d2ebae0e] {
+  margin-top: 2rem;
+  align-self: center;
+}
+

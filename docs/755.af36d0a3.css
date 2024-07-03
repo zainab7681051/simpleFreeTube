@@ -1,0 +1,11 @@
+
+.about[data-v-d2110f02] {
+  color: var(--white);
+  min-height: 90vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
