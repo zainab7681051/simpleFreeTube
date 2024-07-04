@@ -11,7 +11,7 @@ export default {
       now: new Date(),
       isLoading: true,
       imgLoadedCount: 0,
-      error: null
+      error: { msg: null, code: null }
     };
   },
   components: { DisplayVids, LoadingSkeleton, ErrorBox },
@@ -24,7 +24,7 @@ export default {
       if (result.error !== undefined || result.length < 1) {
         this.error.msg = "Fetching popular youtube videos was unsuccesfull. Please try again.";
         this.error.code = 500;
-        return;
+        return this.error;
       }
       return result;
     },
@@ -39,9 +39,9 @@ export default {
 </script>
 
 <template>
-  <div v-if="!error">
+  <error-box v-if="error.msg" :ErrorProp="error" @on-error-box-close="() => error = { msg: null, code: null }" />
+  <div v-else>
     <loading-skeleton v-if="isLoading" />
     <display-vids v-show="!isLoading" @img-loaded="onImageLoad" :VidData="ResultData" />
   </div>
-  <error-box v-else :ErrorProp="error" @on-error-box-close="() => error = null" />
 </template>

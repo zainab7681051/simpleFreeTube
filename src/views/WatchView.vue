@@ -1,6 +1,5 @@
 <template>
   <main>
-    <h1>WATCH VIDEO</h1>
     <WatchVid></WatchVid>
   </main>
 </template>
@@ -12,15 +11,9 @@ import WatchVid from "../components/Watch.vue";
 <style scoped>
 main {
   min-height: 90vh;
-  min-width: 90vw;
+  min-width: 80vw;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  margin: 1rem;
-}
-
-main h1 {
-  margin-top: 2rem;
-  align-self: center;
+  margin-top: -4rem;
 }
 </style>

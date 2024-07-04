@@ -9,7 +9,7 @@ export default {
       call: new callApi(),
       isLoading: true,
       imgLoadedCount: 0,
-      noResult: false
+      error: false
     };
   },
   components: { DisplayVids, LoadingSkeleton },
@@ -24,13 +24,13 @@ export default {
   methods: {
     async searchByQuery() {
       this.isLoading = true;
-      this.noResult = false;
+      this.error = false;
       this.imgLoadedCount = 0;
       const result = await this.call.getByQuery(this.$route.query.q);
       if (result.length > 0) {
         return this.ResultData = result;
       }
-      return this.noResult = true
+      return this.error = true
     },
     onImageLoad() {
       ++this.imgLoadedCount;
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <template>
-  <div class="container" v-if="noResult">
+  <div class="container" v-if="error">
     <h1 class="results-text no-results">found no results for &nbsp;"<span>{{ this.$route.query.q }}</span>"</h1>
   </div>
   <div class="container" v-else>

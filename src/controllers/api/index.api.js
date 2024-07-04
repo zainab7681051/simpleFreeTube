@@ -9,7 +9,6 @@ export class callApi {
       },
     });
   }
-
   async getByTrend() {
     return await invidiousAPICall({
       resource: "trending",

@@ -11,14 +11,14 @@ export default {
       call: new callApi(),
       now: new Date(),
       isLoading: true,
-      imgLoadedCount:0,
-      error: null
+      imgLoadedCount: 0,
+      error: { msg: null, code: null }
     };
   },
-  components: { 
-    DisplayVids, 
-    LoadingSkeleton, 
-    ErrorBox, 
+  components: {
+    DisplayVids,
+    LoadingSkeleton,
+    ErrorBox,
     SearchBar
   },
   async mounted() {
@@ -34,7 +34,7 @@ export default {
       }
       return result;
     },
-    onImageLoad(index) {
+    onImageLoad() {
       ++this.imgLoadedCount;
       if (this.imgLoadedCount >= this.ResultData.length) {
         this.isLoading = false;
@@ -46,13 +46,13 @@ export default {
 
 <template>
   <div class="trend">
-    <search-bar/>
+    <search-bar />
     <h1>Trending</h1>
-    <div v-if="!error">
+    <error-box v-if="error.msg" :ErrorProp="error" @on-error-box-close="() => error = { msg: null, code: null }" />
+    <div v-else>
       <loading-skeleton v-if="isLoading"></loading-skeleton>
       <display-vids @img-loaded="onImageLoad" :VidData="ResultData"></display-vids>
     </div>
-    <error-box v-else :ErrorProp="error" @on-error-box-close="() => error = null" />
   </div>
 
 </template>
