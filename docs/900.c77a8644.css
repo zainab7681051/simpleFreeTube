@@ -1,0 +1,15 @@
+
+.trend[data-v-e6fa36ea] {
+  min-height: 90vh;
+  min-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+.trend h1[data-v-e6fa36ea] {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  align-self: center;
+}
+

@@ -1,0 +1,26 @@
+
+.container[data-v-be2386d6] {
+  display: block;
+  margin: 2rem auto;
+}
+.results-text[data-v-be2386d6] {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 2.5em;
+}
+.results-text span[data-v-be2386d6] {
+  text-transform: none;
+  color: var(--orange);
+  font-weight: 700
+}
+
+
+main[data-v-55883d7c] {
+  min-height: 90vh;
+  min-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
