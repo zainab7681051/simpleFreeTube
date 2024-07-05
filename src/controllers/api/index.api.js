@@ -29,6 +29,7 @@ export class callApi {
           "description",
           "author",
           "authorThumbnails",
+          'recommendedVideos'
         ],
         pretty: 1,
       },

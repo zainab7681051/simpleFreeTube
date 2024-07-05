@@ -112,13 +112,13 @@ a {
 
 @media (min-width: 600px) {
   .vids-container .vid {
-    width: 52%;
+    width: 55%;
   }
 }
 
 @media (min-width: 720px) {
   .vids-container .vid {
-    width: 42%;
+    width: 48%;
   }
 }
 

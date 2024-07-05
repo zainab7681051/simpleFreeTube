@@ -158,15 +158,10 @@ footer p a:hover {
 
 .sections {
   position: relative;
-  min-height: 70vh;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  min-height: 90vh;
   height: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: block;
+  margin: auto;
 }
 
 .custom-button {

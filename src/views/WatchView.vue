@@ -12,8 +12,11 @@ import WatchVid from "../components/Watch.vue";
 main {
   min-height: 90vh;
   min-width: 80vw;
-  display: flex;
-  flex-direction: column;
-  margin-top: -4rem;
+}
+
+@media (min-width: 760) {
+  main {
+    display: flex;
+  }
 }
 </style>

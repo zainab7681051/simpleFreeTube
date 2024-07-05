@@ -32,7 +32,8 @@ export default {
 <style scoped>
 .box {
     display: block;
-    margin: 3rem auto;
+    margin: auto;
+    margin-top: 4rem;
     border-bottom-style: solid;
     border-top-style: solid;
     border-color: var(--dark-red);

@@ -17,9 +17,23 @@
   color: var(--white);
   min-height: 90vh;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-transform: capitalize;
+  display: block;
+  margin: auto;
+}
+
+.about h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.about a {
+  color: var(--blue);
+}
+
+@media (min-width: 1024px) {
+  .about {
+    padding: 5rem
+  }
 }
 </style>
