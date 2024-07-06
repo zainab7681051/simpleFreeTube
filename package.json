@@ -37,7 +37,6 @@
   },
   "browserslist": [
     ">0.1%",
-    "not dead",
     "since 2015"
   ]
 }
