@@ -34,7 +34,7 @@ export default {
     },
     onImageLoad() {
       ++this.imgLoadedCount;
-      if (this.imgLoadedCount >= this.ResultData.length) {
+      if (this.imgLoadedCount >= this.ResultData.length/2) {
         this.isLoading = false;
       }
     }

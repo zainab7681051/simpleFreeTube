@@ -21,7 +21,7 @@ export default {
   methods: {
     async getFromApi() {
       const result = await this.call.getByPop();
-      if (result.error !== undefined || result.length < 1) {
+      if (!result || result.error !== undefined || result.length < 1) {
         this.error.msg = "Fetching popular youtube videos was unsuccesfull. Please try again.";
         this.error.code = 500;
         return this.error;
@@ -30,7 +30,7 @@ export default {
     },
     onImageLoad() {
       ++this.imgLoadedCount;
-      if (this.imgLoadedCount >= this.ResultData.length) {
+      if (this.imgLoadedCount >= this.ResultData.length/2) {
         this.isLoading = false;
       }
     }

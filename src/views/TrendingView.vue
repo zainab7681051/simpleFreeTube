@@ -27,7 +27,7 @@ export default {
   methods: {
     async getFromApi() {
       const result = await this.call.getByTrend();
-      if (result.error !== undefined || result.length < 1) {
+      if (!result || result.error !== undefined || result.length < 1) {
         this.error.msg = "Fetching trending youtube videos was unsuccesfull. Please try again.";
         this.error.code = 500;
         return;
@@ -36,7 +36,7 @@ export default {
     },
     onImageLoad() {
       ++this.imgLoadedCount;
-      if (this.imgLoadedCount >= this.ResultData.length) {
+      if (this.imgLoadedCount >= this.ResultData.length/2) {
         this.isLoading = false;
       }
     }

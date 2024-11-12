@@ -18,21 +18,38 @@ const fetchInvidiousInstances = async () => {
   return instances;
 };
 
-async function callfetchInvidiousInstances(now) {
+async function callfetchInvidiousInstances() {
   const instanceList = await fetchInvidiousInstances();
   return instanceList;
 }
 async function getCurrentInstance() {
-  let now = new Date();
-  const instanceList = await callfetchInvidiousInstances(now);
-  return instanceList[0];
+  const instanceList = await callfetchInvidiousInstances();
+  return instanceList[1];
 }
 
 export async function invidiousAPICall({ resource, id = "", params = {} }) {
   let p = new URLSearchParams(params).toString();
-  const requestUrl =
-    (await getCurrentInstance()) + "/api/v1/" + resource + "/" + id + "?" + p;
-  const response = await fetch(requestUrl);
-  const result = await response.json();
-  return result;
+  let ins = localStorage.getItem("workingInvIns");    
+  if (!ins) {
+      ins = await getCurrentInstance();
+  } 
+  const requestUrl = ins + "/api/v1/" + resource + "/" + id + "?" + p;
+  let response, result = null;
+    try{
+      response = await fetch(requestUrl);
+      if(response)
+        { 
+          result = await response.json(); 
+        }
+      return result;
+    }
+    catch(e){
+      console.log("error in api", e);
+      localStorage.removeItem("workingInvIns");
+      return null;
+    }
+    finally{
+      if(result !== null && !localStorage.getItem("workingInvIns"))
+        localStorage.setItem("workingInvIns", ins);
+    }
 }

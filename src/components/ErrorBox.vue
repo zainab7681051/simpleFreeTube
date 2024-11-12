@@ -10,7 +10,7 @@ export default {
             }
             else if (this.ErrorProp.code >= 500) {
                 //reload the current page when API fails to response with the correct data  
-                this.$router.go(0);
+                return location.reload();
             }
         }
     }
