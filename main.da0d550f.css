@@ -364,7 +364,7 @@ a[data-v-34b09f60] {
 }
 
 
-.box[data-v-2ff62f6f] {
+.box[data-v-63bfeb6c] {
     display: block;
     margin: auto;
     margin-top: 4rem;
@@ -374,41 +374,41 @@ a[data-v-34b09f60] {
     padding: 1rem;
     background: #292828;
 }
-.header-text[data-v-2ff62f6f] {
+.header-text[data-v-63bfeb6c] {
     font-family: monospace;
     text-align: center;
     font-size: 2em;
     color: #e4eeec
 }
-.header-text i[data-v-2ff62f6f] {
+.header-text i[data-v-63bfeb6c] {
     margin-right: 1rem;
     font-size: 1.3em;
     color: var(--dark-red);
 }
-.status-code[data-v-2ff62f6f] {
+.status-code[data-v-63bfeb6c] {
     margin-left: 1rem;
     font-size: 1.2em;
     color: var(--orange)
 }
-.body-text[data-v-2ff62f6f] {
+.body-text[data-v-63bfeb6c] {
     text-transform: capitalize;
     font-size: 1em;
     color: #e4eeec
 }
-.custom-button[data-v-2ff62f6f] {
+.custom-button[data-v-63bfeb6c] {
     margin: 2rem auto 0rem;
 }
-.body-text.yt-link[data-v-2ff62f6f] {
+.body-text.yt-link[data-v-63bfeb6c] {
     margin-top: 1rem;
     color: var(--grey);
 }
-.body-text.yt-link a[data-v-2ff62f6f] {
+.body-text.yt-link a[data-v-63bfeb6c] {
     position: relative;
     color: var(--grey);
     text-decoration: none;
     transition: color 0.3s ease;
 }
-.body-text.yt-link a[data-v-2ff62f6f]::after {
+.body-text.yt-link a[data-v-63bfeb6c]::after {
     content: '';
     position: absolute;
     left: 0;
@@ -418,28 +418,28 @@ a[data-v-34b09f60] {
     background: var(--blue);
     transition: width 0.3s ease;
 }
-.body-text.yt-link a[data-v-2ff62f6f]:hover::after {
+.body-text.yt-link a[data-v-63bfeb6c]:hover::after {
     width: 100%;
 }
 @media (min-width: 600px) {
-.header-text[data-v-2ff62f6f] {
+.header-text[data-v-63bfeb6c] {
         font-size: 2.5em;
 }
-.header-text i[data-v-2ff62f6f] {
+.header-text i[data-v-63bfeb6c] {
         font-size: 1.3em
 }
-.body-text[data-v-2ff62f6f] {
+.body-text[data-v-63bfeb6c] {
         font-size: 1.4em;
 }
 }
 @media (min-width: 1200px) {
-.header-text[data-v-2ff62f6f] {
+.header-text[data-v-63bfeb6c] {
         font-size: 3em;
 }
-.header-text i[data-v-2ff62f6f] {
+.header-text i[data-v-63bfeb6c] {
         font-size: 1.6em
 }
-.body-text[data-v-2ff62f6f] {
+.body-text[data-v-63bfeb6c] {
         font-size: 1.7em;
 }
 }
